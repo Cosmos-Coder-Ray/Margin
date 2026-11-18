@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+
+  --neutral-0: #fcfbf9;
+  --neutral-50: #f7f5f2;
+  --neutral-100: #eeeae5;
+  --neutral-200: #ded8d0;
+  --neutral-300: #c9c1b8;
+  --neutral-400: #a79d93;
+  --neutral-500: #887d73;
+  --neutral-600: #6c6259;
+  --neutral-700: #504840;
+  --neutral-800: #38322c;
+  --neutral-900: #27231f;
+  --neutral-950: #181613;
+
+  --primitive-accent-default: #b65d3f;
+  --primitive-accent-hover: #9e4c32;
+  --primitive-accent-pressed: #843d28;
+  --primitive-accent-foreground: #fffcf9;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-1: 4px;
+  --radius-2: 6px;
+  --radius-3: 8px;
+
+  --shadow-subtle: 0 2px 8px #18161314;
+  --overlay-scrim: #18161340;
+
+  --font-newsreader: "Newsreader Variable", Georgia, serif;
+  --font-geist: "Geist Variable", Inter, sans-serif;
+  --font-geist-mono: "Geist Mono Variable", ui-monospace, monospace;
+
+  --type-12: 12px;
+  --type-13: 13px;
+  --type-14: 14px;
+  --type-16: 16px;
+  --type-20: 20px;
+  --type-28: 28px;
+  --type-40: 40px;
+
+  --leading-12: 16px;
+  --leading-13: 18px;
+  --leading-14: 20px;
+  --leading-16: 24px;
+  --leading-20: 28px;
+  --leading-28: 36px;
+  --leading-40: 48px;
+
+  --stroke-width: 1px;
+  --stroke-focus-width: 2px;
+  --focus-offset: 2px;
+  --icon-size: 16px;
+  --icon-size-small: 14px;
+  --size-12: 12px;
+  --size-24: 24px;
+  --size-28: 28px;
+  --size-32: 32px;
+  --size-34: 34px;
+  --size-36: 36px;
+  --size-40: 40px;
+  --size-44: 44px;
+  --size-48: 48px;
+  --avatar-size: 28px;
+  --sidebar-footer-height: 104px;
+  --editor-min-height: 360px;
+  --resize-handle-width: 6px;
+  --resize-handle-offset: -3px;
+  --menu-min-width: 216px;
+  --command-palette-width: 432px;
+  --command-row-height: 40px;
+  --slash-menu-width: 232px;
+  --tooltip-line-height: 32px;
+  --small-spinner-size: 14px;
+  --empty-state-width: 320px;
+  --viewport-min-width: 360px;
+  --viewport-min-height: 600px;
+  --motion-fast: 120ms;
+  --motion-standard: 160ms;
+  --motion-spinner: 800ms;
+
+  --sidebar-width: 300px;
+  --sidebar-width-min: 240px;
+  --sidebar-width-max: 400px;
+  --sidebar-collapsed-width: 64px;
+  --editor-width: 720px;
+  --topbar-height: 56px;
+
+  --bg-canvas: var(--neutral-0);
+  --bg-surface: var(--neutral-0);
+  --bg-raised: var(--neutral-0);
+  --bg-subtle: var(--neutral-50);
+  --border-subtle: var(--neutral-100);
+  --border-default: var(--neutral-200);
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-500);
+  --accent-default: var(--primitive-accent-default);
+  --accent-hover: var(--primitive-accent-hover);
+  --accent-pressed: var(--primitive-accent-pressed);
+  --accent-foreground: var(--primitive-accent-foreground);
+  --focus-ring: var(--primitive-accent-default);
+  --danger-default: #a84238;
+  --danger-subtle: #f8e8e4;
+  --danger-foreground: #fff9f7;
+  --success-default: #376849;
+  --success-subtle: #e8f0e8;
+  --success-foreground: #f8fcf8;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --primitive-accent-default: #d17a5b;
+  --primitive-accent-hover: #e08a6b;
+  --primitive-accent-pressed: #b65d3f;
+  --primitive-accent-foreground: #241711;
+
+  --bg-canvas: var(--neutral-950);
+  --bg-surface: var(--neutral-900);
+  --bg-raised: var(--neutral-800);
+  --bg-subtle: var(--neutral-800);
+  --border-subtle: var(--neutral-800);
+  --border-default: var(--neutral-700);
+  --text-primary: var(--neutral-50);
+  --text-secondary: var(--neutral-300);
+  --text-tertiary: var(--neutral-400);
+  --focus-ring: var(--primitive-accent-hover);
+  --danger-default: #e18b80;
+  --danger-subtle: #482722;
+  --danger-foreground: #271512;
+  --success-default: #80b693;
+  --success-subtle: #263b2d;
+  --success-foreground: #142117;
+  --overlay-scrim: #00000070;
+}
+
+@theme inline {
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-border-default: var(--border-default);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent: var(--accent-default);
+  --font-sans: var(--font-geist);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-geist-mono);
+}
