@@ -198,6 +198,9 @@ button:disabled {
   margin-top: var(--space-5);
 }
 
+.sidebar-recent-heading { margin-top: var(--space-4); }
+.sidebar-section-empty { padding: 0 var(--space-2); color: var(--text-tertiary); font-size: var(--type-12); }
+
 .sidebar-section-heading {
   display: flex;
   align-items: center;
@@ -829,6 +832,9 @@ button:disabled {
 .command-row-active { background: var(--bg-subtle); color: var(--text-primary); }
 .command-row svg { width: var(--icon-size); height: var(--icon-size); color: var(--text-tertiary); }
 .command-row-label { flex: 1; }
+.command-row-copy { display: grid; flex: 1; min-width: 0; gap: var(--space-1); text-align: left; }
+.command-row-snippet { overflow: hidden; color: var(--text-tertiary); font-size: var(--type-12); line-height: var(--leading-12); text-overflow: ellipsis; white-space: nowrap; }
+.search-highlight { border-radius: var(--radius-1); background: color-mix(in srgb, var(--accent-default) 16%, transparent); color: var(--text-primary); }
 .text-tertiary { color: var(--text-tertiary); font-size: var(--type-12); }
 .command-empty { padding: var(--space-6) var(--space-2); color: var(--text-tertiary); text-align: center; font-size: var(--type-13); }
 .command-footer { display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-2); padding: var(--space-2) var(--space-1) 0; border-top: var(--stroke-width) solid var(--border-subtle); color: var(--text-tertiary); font-size: var(--type-12); }
@@ -848,6 +854,35 @@ button:disabled {
 .slash-menu-item { display: flex; width: 100%; height: var(--size-34); align-items: center; gap: var(--space-2); padding: 0 var(--space-2); border: 0; border-radius: var(--radius-1); background: transparent; color: var(--text-secondary); text-align: left; font-size: var(--type-13); cursor: pointer; }
 .slash-menu-item:hover, .slash-menu-item-active { background: var(--bg-subtle); color: var(--text-primary); }
 .slash-menu-item svg { width: var(--icon-size); height: var(--icon-size); color: var(--text-tertiary); }
+
+.wiki-link-node { display: inline; }
+.wiki-link { display: inline; padding: 0; border: 0; border-bottom: var(--stroke-width) solid color-mix(in srgb, var(--accent-default) 45%, transparent); background: transparent; color: var(--accent-default); cursor: pointer; }
+.wiki-link:hover { border-bottom-color: var(--accent-default); color: var(--accent-hover); }
+.wiki-link:focus-visible { border-radius: var(--radius-1); }
+.wiki-link:disabled { color: var(--text-tertiary); cursor: not-allowed; }
+.wiki-link-menu { position: fixed; z-index: 20; width: min(var(--wiki-link-menu-width), calc(100vw - var(--space-6))); max-height: 320px; overflow: auto; padding: var(--space-2); border: var(--stroke-width) solid var(--border-default); border-radius: var(--radius-2); background: var(--bg-raised); box-shadow: var(--shadow-subtle); }
+.wiki-link-option { display: flex; width: 100%; min-height: var(--size-36); align-items: center; gap: var(--space-2); padding: 0 var(--space-2); border: 0; border-radius: var(--radius-1); background: transparent; color: var(--text-secondary); text-align: left; font-size: var(--type-13); cursor: pointer; }
+.wiki-link-option:hover, .wiki-link-option-active { background: var(--bg-subtle); color: var(--text-primary); }
+.wiki-link-option svg { width: var(--icon-size); height: var(--icon-size); color: var(--text-tertiary); }
+.wiki-link-empty { padding: var(--space-3); color: var(--text-tertiary); font-size: var(--type-13); }
+.linked-references { display: grid; gap: var(--space-3); width: min(var(--editor-width), calc(100% - 2 * var(--space-6))); margin: var(--space-12) auto var(--space-16); }
+.linked-references h2 { margin: 0; color: var(--text-primary); font-family: var(--font-newsreader); font-size: var(--type-20); font-weight: 500; line-height: var(--leading-20); }
+.linked-reference { display: grid; gap: var(--space-1); padding: var(--space-3) var(--space-4); border: var(--stroke-width) solid var(--border-subtle); border-radius: var(--radius-2); background: var(--bg-surface); text-align: left; cursor: pointer; transition: background-color var(--motion-fast) ease, border-color var(--motion-fast) ease; }
+.linked-reference:hover { border-color: var(--border-default); background: var(--bg-subtle); }
+.linked-reference:active { background: var(--bg-raised); }
+.linked-reference-title { color: var(--accent-default); font-size: var(--type-13); font-weight: 500; }
+.linked-reference-text { color: var(--text-secondary); font-size: var(--type-13); line-height: var(--leading-13); }
+.linked-references-empty { margin: 0; color: var(--text-tertiary); font-size: var(--type-13); }
+.trash-view { width: min(var(--editor-width), calc(100% - 2 * var(--space-6))); margin: var(--space-10) auto; }
+.trash-view h1 { margin: 0 0 var(--space-2); color: var(--text-primary); font-family: var(--font-newsreader); font-size: var(--type-28); font-weight: 500; line-height: var(--leading-28); }
+.trash-view > p { margin: 0 0 var(--space-6); color: var(--text-secondary); font-size: var(--type-14); }
+.trash-list { display: grid; gap: var(--space-2); }
+.trash-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-4); border: var(--stroke-width) solid var(--border-subtle); border-radius: var(--radius-2); background: var(--bg-surface); }
+.trash-row > div { display: grid; gap: var(--space-1); min-width: 0; }
+.trash-page-title { overflow: hidden; color: var(--text-primary); font-size: var(--type-14); text-overflow: ellipsis; white-space: nowrap; }
+.trash-page-notebook { color: var(--text-tertiary); font-size: var(--type-12); }
+.trash-empty { padding: var(--space-10); border: var(--stroke-width) dashed var(--border-default); border-radius: var(--radius-2); color: var(--text-tertiary); text-align: center; }
+.menu-label { padding: var(--space-2) var(--space-2) var(--space-1); color: var(--text-tertiary); font-size: var(--type-12); }
 
 .bubble-menu { display: flex; gap: var(--space-1); padding: var(--space-1); border: var(--stroke-width) solid var(--border-subtle); border-radius: var(--radius-2); background: var(--bg-raised); box-shadow: var(--shadow-subtle); }
 .bubble-menu .icon-button { width: var(--size-28); height: var(--size-28); }

@@ -13,6 +13,8 @@ import { useAppStore } from '@/lib/store'
 import type { NotePage } from '@/lib/db'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Primitives'
+import { db, type Backlink } from '@/lib/db'
+import { WikiLink, WikiLinkSuggestion } from './WikiLink'
 
 interface SlashItem {
   title: string
@@ -202,6 +204,8 @@ export function NoteEditor({ page }: { page: NotePage }) {
       Callout,
       ImageBlock,
       SlashCommands,
+      WikiLink,
+      WikiLinkSuggestion,
       Placeholder.configure({ placeholder: 'Write something, or type / for blocks…' }),
     ],
     content: page.content,
@@ -268,6 +272,37 @@ export function NoteEditor({ page }: { page: NotePage }) {
           </>
         )}
       </div>
+      <LinkedReferences pageId={page.id} />
     </article>
+  )
+}
+
+function LinkedReferences({ pageId }: { pageId: string }) {
+  const pages = useAppStore((state) => state.pages)
+  const selectPage = useAppStore((state) => state.selectPage)
+  const [references, setReferences] = useState<Backlink[]>([])
+
+  useEffect(() => {
+    let active = true
+    void db.backlinks.where('targetPageId').equals(pageId).toArray().then((items) => {
+      if (active) setReferences(items)
+    })
+    return () => { active = false }
+  }, [pageId, pages])
+
+  return (
+    <section className="linked-references" aria-labelledby="linked-references-title">
+      <h2 id="linked-references-title">Linked references</h2>
+      {references.length ? references.map((reference) => {
+        const source = pages.find((item) => item.id === reference.sourcePageId)
+        if (!source) return null
+        return (
+          <button key={reference.id} type="button" className="linked-reference" onClick={() => selectPage(source.id)}>
+            <span className="linked-reference-title">{source.title}</span>
+            <span className="linked-reference-text">{reference.blockText || 'Linked from this page'}</span>
+          </button>
+        )
+      }) : <p className="linked-references-empty">No pages link here yet.</p>}
+    </section>
   )
 }
